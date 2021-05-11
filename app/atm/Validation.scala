@@ -4,16 +4,6 @@ import java.util.regex.{Matcher, Pattern}
 
 class Validation {
 
-  def isValidInput(inputType:String, inputValue:String): Boolean = {
-    inputType match {
-      case "name" => isValidName(inputValue)
-      case "accountNumber" => isValidAccountNumber(inputValue)
-      case "pin" => isValidPin(inputValue)
-      case "age" => isValidAge(inputValue.toInt)
-      case _ => false
-    }
-  }
-
   def isValidAmount(data:String): Boolean = {
     if (isNumber(data)) {
       val amount:Int = data.toInt
@@ -39,13 +29,6 @@ class Validation {
     }
   }
 
-  def isValidName(data:Any): Boolean = {
-    val accountName:String = data.asInstanceOf[String]
-    val pattern:Pattern = Pattern.compile("^[a-zA-Z]([._-](?![._-])|[a-zA-Z]){3,18}[a-zA-Z]$")
-    val matcher:Matcher = pattern.matcher(accountName)
-    matcher.matches()
-  }
-
   def isValidAccountNumber(data:String): Boolean = {
     val accountNumber:String = data.asInstanceOf[String]
     val pattern:Pattern = Pattern.compile("[0-9]{9,18}")
@@ -59,12 +42,5 @@ class Validation {
     val matcher:Matcher = pattern.matcher(pin)
     matcher.matches()
   }
-
-  def isValidAge(data:Int): Boolean = {
-    val age: Int = data.asInstanceOf[String].toInt
-    if ((age > 17) && (age < 125)) {
-      return true
-    }
-    false
-  }
+  
 }
