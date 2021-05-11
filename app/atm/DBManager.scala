@@ -23,6 +23,8 @@ class DBManager {
       }
     } catch {
         case exception: Exception => isValidData = false
+    } finally {
+      dbConnection.close()
     }
     isValidData
   }
@@ -41,6 +43,8 @@ class DBManager {
       }
     } catch {
         case exception: Exception => exception.getMessage
+    } finally {
+      dbConnection.close()
     }
     balance
   }
@@ -63,6 +67,8 @@ class DBManager {
       true
     } catch {
         case exception: Exception =>  false
+    } finally {
+      dbConnection.close()
     }
   }
 
@@ -80,6 +86,8 @@ class DBManager {
       false
     } catch {
         case exception: Exception => false
+    } finally {
+      dbConnection.close()
     }
   }
 
@@ -99,6 +107,8 @@ class DBManager {
       false
     } catch {
         case exception: Exception => false
+    } finally {
+      dbConnection.close()
     }
   }
 
@@ -114,6 +124,8 @@ class DBManager {
       true
     } catch {
         case exception: Exception => false
+    } finally {
+      dbConnection.close()
     }
   }
 
